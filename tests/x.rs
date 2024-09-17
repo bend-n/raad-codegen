@@ -1,6 +1,11 @@
-#[derive(raad_codegen::Read, raad_codegen::Write)]
-struct X {
-    y: u8,
-}
 #[derive(raad_codegen::Write, raad_codegen::Read)]
-struct Z(X);
+struct Header<T, U> {
+    #[raad(equals)]
+    magic: [u8; 4],
+    width: u32,
+    height: u32,
+    channels: u8,
+    colorspace: u8,
+    yar: T,
+    var: U,
+}
